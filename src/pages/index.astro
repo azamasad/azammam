@@ -11,17 +11,28 @@ const latest = writing[0];
 <Base title={`${site.name} · English teacher, writer, painter`} description={site.description}>
   <h1 class="sr-only">{site.name}</h1>
   <p class="lede">
-    Quddusia Azam taught English for more than thirty years, mostly to children in classes 3 to 5, about ages eight to
-    eleven, and up to class 10, about age sixteen. She writes and paints. She lives in Ranchi, travels in India, and
-    visits family in Canada and the United Kingdom.
+    Quddusia Azam taught English for three decades, from a prep class in 1992, mostly to children in classes 3 to 5, and
+    up to class 10. She has recently left the classroom. She writes and paints in Ranchi, where she grew up in Doranda,
+    and she travels in India and to Canada and the United Kingdom to see family.
   </p>
+  {
+    latest && (
+      <article class="featured">
+        <p class="kicker">
+          <a href={`/writing/${latest.id}`}>Latest writing</a>
+        </p>
+        <h2 class="featured-title">
+          <a href={`/writing/${latest.id}`}>{latest.data.title}</a>
+        </h2>
+        <p class="featured-dek">{latest.data.description}</p>
+      </article>
+    )
+  }
   <ol class="contents">
     <li>
       <a class="contents-link" href="/writing">
         <span class="contents-name">Writing</span>
-        <span class="contents-note">
-          Essays and opinions, in English.{latest ? ` Latest: ${latest.data.title}.` : ''}
-        </span>
+        <span class="contents-note">Essays, memoirs, and a talk, in English.</span>
       </a>
     </li>
     <li>
@@ -33,7 +44,7 @@ const latest = writing[0];
     <li>
       <a class="contents-link" href="/teaching">
         <span class="contents-name">Teaching</span>
-        <span class="contents-note">Thirty years in the classroom. B.Ed., M.A.</span>
+        <span class="contents-note">Three decades in the classroom. B.Ed., M.A.</span>
       </a>
     </li>
   </ol>
