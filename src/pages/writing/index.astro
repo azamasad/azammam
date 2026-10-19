@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { byNewest, formatDate } from '../../lib/dates';
+
+const pieces = (await getCollection('writing')).sort(byNewest);
+---
+
+<Base
+  title="Writing"
+  description="Essays and opinions in English by Quddusia Azam, including work already published elsewhere."
+>
+  <h1 class="page-title">Writing</h1>
+  <hr class="rule" />
+  <p class="dek">
+    Essays, opinions, and other pieces in English. Work she has already published elsewhere is listed here with a link.
+    New writing will be added as it is ready.
+  </p>
+  {
+    pieces.length > 0 && (
+      <ol class="pieces">
+        {pieces.map((piece) => (
+          <li>
+            <a class="piece-link" href={`/writing/${piece.id}`}>
+              <span class="piece-title">{piece.data.title}</span>
+              <span class="piece-meta">
+                {piece.data.date ? formatDate(piece.data.date) : piece.data.sourceName}
+              </span>
+            </a>
+            <p class="piece-dek">{piece.data.description}</p>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+</Base>

@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate } from '../../lib/dates';
+
+export async function getStaticPaths() {
+  const pieces = await getCollection('writing');
+  return pieces.map((piece) => ({
+    params: { id: piece.id },
+    props: { piece },
+  }));
+}
+
+const { piece } = Astro.props;
+const { Content } = await render(piece);
+const hasText = Boolean(piece.body?.trim());
+const meta = piece.data.date ? formatDate(piece.data.date) : piece.data.sourceName;
+---
+
+<Base title={piece.data.title} description={piece.data.description} ogType="article">
+  <article>
+    <p class="kicker"><a href="/writing">Writing</a></p>
+    <h1 class="page-title">{piece.data.title}</h1>
+    {meta && <p class="piece-meta">{meta}</p>}
+    <hr class="rule" />
+    {hasText && (
+      <div class="prose">
+        <Content />
+      </div>
+    )}
+    {
+      piece.data.sourceUrl && (
+        <p class="outlink">
+          <a href={piece.data.sourceUrl} rel="noopener noreferrer">
+            {hasText
+              ? `First posted on ${piece.data.sourceName ?? 'the original page'}`
+              : `Read it on ${piece.data.sourceName ?? 'the original page'}`}
+          </a>
+        </p>
+      )
+    }
+  </article>
+</Base>

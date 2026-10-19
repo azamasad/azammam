@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+import { byNewest } from '../lib/dates';
+
+const writing = (await getCollection('writing')).sort(byNewest);
+const latest = writing[0];
+---
+
+<Base title={`${site.name} · English teacher, writer, painter`} description={site.description}>
+  <h1 class="sr-only">{site.name}</h1>
+  <p class="lede">
+    Quddusia Azam taught English for more than thirty years, mostly to children in classes 3 to 5, about ages eight to
+    eleven, and up to class 10, about age sixteen. She writes and paints. She lives in Ranchi, travels in India, and
+    visits family in Canada and the United Kingdom.
+  </p>
+  <ol class="contents">
+    <li>
+      <a class="contents-link" href="/writing">
+        <span class="contents-name">Writing</span>
+        <span class="contents-note">
+          Essays and opinions, in English.{latest ? ` Latest: ${latest.data.title}.` : ''}
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="contents-link" href="/paintings">
+        <span class="contents-name">Paintings</span>
+        <span class="contents-note">A gallery of her pictures.</span>
+      </a>
+    </li>
+    <li>
+      <a class="contents-link" href="/teaching">
+        <span class="contents-name">Teaching</span>
+        <span class="contents-note">Thirty years in the classroom. B.Ed., M.A.</span>
+      </a>
+    </li>
+  </ol>
+</Base>
