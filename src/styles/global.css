@@ -387,6 +387,11 @@ a {
 
 .prose h2 {
   font-size: 1.6rem;
+  margin-top: 1.8rem;
+}
+
+.prose blockquote p + p {
+  margin-top: 0.45rem;
 }
 
 .prose h3 {

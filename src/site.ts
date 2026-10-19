@@ -6,6 +6,7 @@ export const site = {
   region: 'Jharkhand, India',
   description:
     'Quddusia Azam is an English teacher, writer, and painter in Ranchi. Essays, paintings, and a record of thirty years in the classroom.',
+  email: 'quddusiaazam@gmail.com',
   facebook: 'https://www.facebook.com/quddusia.azam',
   facebookLabel: 'Facebook',
   film: 'https://youtu.be/ZLFreGxyoY4',

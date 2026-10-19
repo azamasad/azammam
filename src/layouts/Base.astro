@@ -29,6 +29,7 @@ const person = {
   jobTitle: 'English teacher',
   description: site.description,
   url: site.url,
+  email: site.email,
   homeLocation: {
     '@type': 'Place',
     name: `${site.place}, ${site.region}`,
@@ -105,7 +106,9 @@ const person = {
         <slot />
         <footer class="colophon">
           <p>
-            {site.name}, {site.place}. <a href={site.facebook}>Facebook</a>
+            {site.name}, {site.place}. <a href={`mailto:${site.email}`}>{site.email}</a>
+            {' · '}
+            <a href={site.facebook}>Facebook</a>
           </p>
         </footer>
       </main>
