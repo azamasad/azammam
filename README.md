@@ -40,6 +40,10 @@ sourceUrl: https://www.facebook.com/quddusia.azam/posts/missing-the-pyramids/282
 
 Paste the full text under the `---` when you want it to live on the site as well as on Facebook.
 
+## Add her photograph
+
+Save a clear portrait as `public/portrait.jpg`. The About page shows it in the small frame. Until that file is there, the frame stays empty.
+
 ## Hang a painting
 
 1. Put a clear photograph in `public/paintings/`, for example `public/paintings/lake.jpg`.

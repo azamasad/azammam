@@ -359,6 +359,62 @@ body {
   color: var(--ink);
 }
 
+.with-portrait {
+  display: grid;
+  gap: 1.15rem 1.75rem;
+  align-items: start;
+}
+
+.portrait {
+  margin: 0;
+  width: 7.5rem;
+}
+
+.portrait-mat {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 0.45rem;
+}
+
+.portrait-frame,
+.portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.portrait-frame {
+  border: 1px solid var(--mat);
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 46%),
+    #f7f1e6;
+  color: var(--muted);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+}
+
+.portrait img {
+  object-fit: cover;
+  height: auto;
+}
+
+.portrait figcaption {
+  margin: 0.45rem 0 0;
+  max-width: 7.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+@media (min-width: 720px) {
+  .with-portrait {
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+  }
+}
+
 .block + .block {
   margin-top: 2.5rem;
 }

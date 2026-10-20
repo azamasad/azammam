@@ -35,6 +35,11 @@ const person = {
     name: `${site.place}, ${site.region}`,
   },
   sameAs: [site.facebook],
+  affiliation: {
+    '@type': 'EducationalOrganization',
+    name: site.school,
+    url: site.schoolUrl,
+  },
   hasCredential: [
     {
       '@type': 'EducationalOccupationalCredential',

@@ -5,7 +5,9 @@ export const site = {
   place: 'Ranchi',
   region: 'Jharkhand, India',
   description:
-    'Quddusia Azam taught English in Ranchi for three decades. She writes, paints, and keeps a record of the classroom.',
+    'Quddusia Azam taught English at Jawahar Vidya Mandir, Shyamali, Ranchi, for three decades. She writes, paints, and keeps a record of the classroom.',
+  school: 'Jawahar Vidya Mandir, Shyamali, Ranchi',
+  schoolUrl: 'https://www.jvmshyamali.com/',
   email: 'quddusiaazam@gmail.com',
   facebook: 'https://www.facebook.com/quddusia.azam',
   facebookLabel: 'Facebook',
