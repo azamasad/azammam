@@ -65,21 +65,22 @@ date: 2018-01-01
 
 ## Publish
 
-The site is a folder of files. `npm run build` writes them into `dist/`. No server and no database.
+The site is a folder of files. `npm run build` writes them into `dist/`. No server and no database. The first cut is served from the Hetzner VPS. Caddy on that machine requests and renews the certificate for azammam.com.
 
-GitHub Actions deploys `dist/` when `main` changes. The domain is at GoDaddy and still shows a parked page. azammam.com opens after these steps, in this order:
-
-1. In the GitHub repo, open Settings, then Pages. Under Build and deployment, set Source to GitHub Actions.
-2. Merge the site into `main`. The workflow publishes it. Check that https://azamasad.github.io/azammam/ loads.
-3. On that same Pages screen, under Custom domain, enter `azammam.com` and save. Wait until the DNS check is offered.
-4. In GoDaddy DNS for azammam.com, remove the parked A records and add:
+The domain is at GoDaddy. These two A records are the parked page, and they are the only records to delete:
 
 | Type | Name | Value |
 | --- | --- | --- |
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `azamasad.github.io` |
+| A | `@` | `15.197.148.33` |
+| A | `@` | `3.33.130.190` |
 
-GitHub then issues the certificate. DNS can take a few hours. Do the GoDaddy change only after the custom domain is saved on GitHub, so the name is not left pointing at an unclaimed host.
+Leave the name servers (`ns55.domaincontrol.com`, `ns56.domaincontrol.com`) as they are. Leave the `www` CNAME, which already points at `azammam.com`.
+
+Add the server’s address:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | the Hetzner public IPv4 |
+| AAAA | `@` | the Hetzner public IPv6, only if the server has one |
+
+If GoDaddy also has domain forwarding or a parking toggle, turn that off. The records above are cached for five minutes. After they answer with the VPS address, Caddy can finish the certificate.
