@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://azammam.com/sitemap-index.xml

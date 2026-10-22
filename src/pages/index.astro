@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+import { byNewest } from '../lib/dates';
+
+const writing = (await getCollection('writing')).sort(byNewest);
+const latest = writing[0];
+---
+
+<Base title={`${site.name} · English teacher, writer, painter`} description={site.description}>
+  <h1 class="sr-only">{site.name}</h1>
+  <p class="lede">
+    Quddusia Azam taught English for three decades, from a prep class in 1992, mostly to children in classes 3 to 5, and
+    up to class 10. She has recently left the classroom. She writes and paints in Ranchi, where she grew up in Doranda,
+    and she travels in India and to Canada and the United Kingdom to see family.
+  </p>
+  {
+    latest && (
+      <article class="featured">
+        <p class="kicker">
+          <a href={`/writing/${latest.id}`}>Latest writing</a>
+        </p>
+        <h2 class="featured-title">
+          <a href={`/writing/${latest.id}`}>{latest.data.title}</a>
+        </h2>
+        <p class="featured-dek">{latest.data.description}</p>
+      </article>
+    )
+  }
+  <ol class="contents">
+    <li>
+      <a class="contents-link" href="/writing">
+        <span class="contents-name">Writing</span>
+        <span class="contents-note">Essays, memoirs, and a talk, in English.</span>
+      </a>
+    </li>
+    <li>
+      <a class="contents-link" href="/paintings">
+        <span class="contents-name">Paintings</span>
+        <span class="contents-note">A gallery of her pictures.</span>
+      </a>
+    </li>
+    <li>
+      <a class="contents-link" href="/teaching">
+        <span class="contents-name">Teaching</span>
+        <span class="contents-note">Jawahar Vidya Mandir, Shyamali. B.Ed., M.A.</span>
+      </a>
+    </li>
+  </ol>
+</Base>

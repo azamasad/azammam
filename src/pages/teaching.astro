@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+---
+
+<Base
+  title="Teaching"
+  description="Quddusia Azam taught English at Jawahar Vidya Mandir, Shyamali, Ranchi, from 1992 for three decades. She holds a B.Ed. and an M.A."
+>
+  <h1 class="page-title">Teaching</h1>
+  <hr class="rule" />
+  <section class="block">
+    <h2>The classroom</h2>
+    <p>
+      For three decades Quddusia Azam taught English to schoolchildren. She began in 1992 with a prep class. The heart
+      of the work was classes 3, 4, and 5, children of about eight to eleven, and she taught up to class 10, about age
+      sixteen. She taught at <a href={site.schoolUrl} rel="noopener noreferrer">{site.school}</a>. She had wanted to be a doctor. Teaching became the work of her life.
+    </p>
+    <blockquote class="mantra">
+      <p>If the students love you, they will automatically love your subject.</p>
+    </blockquote>
+    <p>
+      She has written about those years in <a href="/writing/the-last-two-days">The last two days</a>.
+    </p>
+  </section>
+  <section class="block">
+    <h2>Studies</h2>
+    <p>She holds a B.Ed. and an M.A.</p>
+  </section>
+  <section class="block">
+    <h2>In public</h2>
+    <p>
+      In 2020 she appeared in <em>#ThankYouTeachers</em>, a film made for Nihar Shanti Amla by BBH India and directed by
+      Niyantha Shekar. It was a portrait of teachers learning to take the classroom online.
+    </p>
+    <p>
+      <a href={site.film} rel="noopener noreferrer">Watch the film</a><br />
+      <a href={site.filmCredit} rel="noopener noreferrer">Credits and stills</a>
+    </p>
+  </section>
+  <section class="block">
+    <h2>An invitation</h2>
+    <p>
+      She has recently retired, and she is glad to be invited to teach. A note can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>, or through her <a href={site.facebook}>Facebook page</a>.
+    </p>
+  </section>
+</Base>

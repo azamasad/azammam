@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { byNewest } from '../../lib/dates';
+
+const paintings = (await getCollection('paintings')).sort(byNewest);
+---
+
+<Base
+  title="Paintings"
+  description="Paintings by Quddusia Azam, hung with a title and a few lines."
+>
+  <h1 class="page-title">Paintings</h1>
+  <hr class="rule" />
+  <p class="dek">Paintings by Quddusia Azam. A title and a few lines can sit with each picture.</p>
+  {
+    paintings.length === 0 ? (
+      <figure class="mat">
+        <div class="mat-inner">
+          <p>Her paintings will be hung here.</p>
+        </div>
+      </figure>
+    ) : (
+      <div class="hanging">
+        {paintings.map((painting) => {
+          const details = [painting.data.medium, painting.data.year].filter(Boolean).join(' · ');
+          return (
+            <figure class="mat">
+              <div class="mat-inner has-picture">
+                <img src={painting.data.image} alt={painting.data.alt ?? painting.data.title} />
+              </div>
+              <figcaption>
+                <span class="piece-title">{painting.data.title}</span>
+                {details && <span class="piece-meta">{details}</span>}
+                {painting.data.caption && <p class="caption">{painting.data.caption}</p>}
+              </figcaption>
+            </figure>
+          );
+        })}
+      </div>
+    )
+  }
+</Base>
